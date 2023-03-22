@@ -1,0 +1,2 @@
+sylvain_en_crush,FOR+2,DEF+2,RES+2
+ninja,NBA+40,ESQ+100
