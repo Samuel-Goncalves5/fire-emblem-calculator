@@ -1,5 +1,7 @@
 package fr.epita.assistants.calculator;
 
+import static java.lang.Math.max;
+
 public class Perso {
     public Unit unit = null;
     public Weapon weapon = null;
@@ -23,8 +25,12 @@ public class Perso {
         if (def.unit != null) def.squad = def.unit.s;
 
         if (squad != null) Bonus.apply(squad.linear, squad.percent, unit, weapon, squad);
+        if (weapon != null) Bonus.apply(weapon.linear, weapon.percent, unit, weapon, squad);
         Bonus.apply(linear, percent, unit, weapon, squad);
         if (def.squad != null) Bonus.apply(def.squad.linear, def.squad.percent, def.unit, def.weapon, def.squad);
+
+
+        if (def.weapon != null) Bonus.apply(def.weapon.linear, def.weapon.percent, def.unit, def.weapon, def.squad);
         Bonus.apply(def.linear, def.percent, def.unit, def.weapon, def.squad);
 
         boolean error = false;
@@ -82,6 +88,11 @@ public class Perso {
             esquive1 /= 100;
             esquive1 += squad.linear.esquive;
         }
+
+        esquive1 *= weapon.percent.esquive;
+        esquive1 /= 100;
+        esquive1 += weapon.linear.esquive;
+
         esquive1 *= percent.esquive;
         esquive1 /= 100;
         esquive1 += linear.esquive;
@@ -92,6 +103,12 @@ public class Perso {
             esquive2 *= def.squad.percent.esquive;
             esquive2 /= 100;
             esquive2 += def.squad.linear.esquive;
+        }
+        if (def.weapon != null)
+        {
+            esquive2 *= def.weapon.percent.esquive;
+            esquive2 /= 100;
+            esquive2 += def.weapon.linear.esquive;
         }
         esquive2 *= def.percent.esquive;
         esquive2 /= 100;
@@ -137,6 +154,11 @@ public class Perso {
             nombre1 /= 100;
             nombre1 += squad.linear.nombre;
         }
+
+        nombre1 *= weapon.percent.nombre;
+        nombre1 /= 100;
+        nombre1 += weapon.linear.nombre;
+
         nombre1 *= percent.nombre;
         nombre1 /= 100;
         nombre1 += linear.nombre;
@@ -147,9 +169,24 @@ public class Perso {
             nombre2 /= 100;
             nombre2 += def.squad.linear.nombre;
         }
+        if (def.weapon != null)
+        {
+            nombre2 *= def.weapon.percent.nombre;
+            nombre2 /= 100;
+            nombre2 += def.weapon.linear.nombre;
+        }
         nombre2 *= def.percent.nombre;
         nombre2 /= 100;
         nombre2 += def.linear.nombre;
+
+        precision1 = max(precision1,0);
+        degats1 = max(degats1,0);
+        nombre1 = max(nombre1,0);
+        critique1 = max(critique1,0);
+        precision2 = max(precision2,0);
+        degats2 = max(degats2,0);
+        nombre2 = max(nombre2,0);
+        critique2 = max(critique2,0);
 
         System.out.println();
         System.out.println(Interface.YELLOW + unit.name + " :");
