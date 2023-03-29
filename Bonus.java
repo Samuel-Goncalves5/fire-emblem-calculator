@@ -1,5 +1,3 @@
-package fr.epita.assistants.calculator;
-
 public class Bonus {
     public int life;
     public int strengh;

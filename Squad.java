@@ -1,5 +1,3 @@
-package fr.epita.assistants.calculator;
-
 public class Squad {
     public int damage;
     public int precision;

@@ -1,5 +1,3 @@
-package fr.epita.assistants.calculator;
-
 import java.util.Random;
 import java.util.Scanner;
 

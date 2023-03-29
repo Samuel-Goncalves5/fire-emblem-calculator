@@ -1,5 +1,3 @@
-package fr.epita.assistants.calculator;
-
 public class Weapon {
     public int damage;
     public int crit;

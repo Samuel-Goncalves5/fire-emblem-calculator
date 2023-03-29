@@ -1,5 +1,3 @@
-package fr.epita.assistants.calculator;
-
 import static java.lang.Math.max;
 
 public class Perso {
@@ -199,11 +197,12 @@ public class Perso {
         System.out.println("\tCRT = " + critique2);
         System.out.println();
         System.out.println(Interface.GREEN + "Lancer la simulation ?");
-        System.out.println("oui/non > ");
+        System.out.println("oui/non > " + Interface.RESET);
         String input = Interface.s.nextLine();
         if (input.charAt(0) == 'n') return;
         while (nombre1 > 0 || nombre2 > 0)
         {
+            System.out.print(Interface.RED);
             if (nombre1 > 0)
             {
                 int hit = true_hit();

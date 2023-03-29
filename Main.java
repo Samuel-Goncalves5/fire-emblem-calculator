@@ -1,5 +1,3 @@
-package fr.epita.assistants.calculator;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,7 +20,7 @@ public class Main {
     }
 
     public static void recupBonus() {
-        Path file = Paths.get("src/main/resources/modif.txt");
+        Path file = Paths.get("modif.txt");
         List<String> bonuses = new ArrayList<>();
         try { bonuses = Files.readAllLines(file); }
         catch (IOException ignored) {
@@ -34,7 +32,7 @@ public class Main {
     }
 
     public static void recupInfos() {
-        Path file = Paths.get("src/main/resources/infos.txt");
+        Path file = Paths.get("infos.txt");
         List<String> infos = new ArrayList<>();
         try { infos = Files.readAllLines(file); }
         catch (IOException ignored) {
@@ -46,9 +44,9 @@ public class Main {
             if (info.charAt(0) == '#') i++;
             else {
                 switch (i) {
-                    case 1 -> squads.add(new Squad(info.split(",")));
-                    case 2 -> units.add(new Unit(info.split(",")));
-                    case 3 -> weapons.add(new Weapon(info.split(",")));
+                    case 1: squads.add(new Squad(info.split(","))); break;
+                    case 2: units.add(new Unit(info.split(","))); break;
+                    case 3: weapons.add(new Weapon(info.split(","))); break;
                 }
             }
         }

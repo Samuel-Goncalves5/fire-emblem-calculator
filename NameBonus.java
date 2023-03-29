@@ -1,5 +1,3 @@
-package fr.epita.assistants.calculator;
-
 public class NameBonus {
     public Bonus linear = new Bonus(0);
     public Bonus percent = new Bonus(100);
